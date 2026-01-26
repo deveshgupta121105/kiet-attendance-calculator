@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "KIET Attendance Calculator",
+  "version": "1.0",
+  "description": "Calculate classes needed to achieve 75% attendance on KIET portal",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "tabs",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://kiet.cybervidya.net/*"
+  ],
+  "action": {},
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://kiet.cybervidya.net/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["dashboard.html", "dashboard.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
